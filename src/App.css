@@ -1,0 +1,13 @@
+footer {
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+  footer {
+    font-size: 10px;
+    line-height: 1.5;
+    white-space: normal;
+  }
+}
