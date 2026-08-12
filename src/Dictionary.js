@@ -1,14 +1,12 @@
-import "./Dictionary.css";
-import Results from "./Results";
 import React, { useState } from "react";
 import axios from "axios";
+import Results from "./Results";
 
 export default function Dictionary() {
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState(null);
 
   function handleKeywordChange(event) {
-    console.log(event.target.value);
     setKeyword(event.target.value);
   }
 
@@ -25,16 +23,21 @@ export default function Dictionary() {
       return;
     }
 
-    let apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(
+    const apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(
       searchedWord
     )}`;
-    axios.get(apiURL).then(handleResponse);
+
+    axios
+      .get(apiURL)
+      .then(handleResponse)
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
     <div className="Dictionary">
-      <h1>Dictionary App</h1>
-      <form onSubmit={search} className="search-functions">
+      <form onSubmit={search}>
         <input
           type="search"
           placeholder="Enter a word..."
@@ -43,7 +46,8 @@ export default function Dictionary() {
           value={keyword}
           onChange={handleKeywordChange}
         />
-        <input type="submit" value="Search" className="btn btn-primary" />
+
+        <button type="submit">Search</button>
       </form>
 
       <Results results={results} />
