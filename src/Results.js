@@ -1,6 +1,7 @@
 import React from "react";
 import Meaning from "./Meaning";
 import Phonetics from "./Phonetics";
+import "./Results.css";
 
 export default function Results({ results }) {
   if (!results) {
@@ -8,8 +9,8 @@ export default function Results({ results }) {
   }
 
   return (
-    <div className="Results">
-      <h2 className="word-header">{results.word}</h2>
+    <div className="Results mt-4">
+      <h2 className="text-center fw-bold mb-2">{results.word}</h2>
 
       <Phonetics phonetics={results.phonetics} />
 
