@@ -4,4 +4,12 @@
 
 .Results h2 {
   text-transform: uppercase;
+  margin: 0;
+}
+
+.Results .word-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

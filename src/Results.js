@@ -10,9 +10,11 @@ export default function Results({ results }) {
 
   return (
     <div className="Results mt-4">
-      <h2 className="text-center fw-bold mb-2">{results.word}</h2>
+      <h2 className="text-center fw-bold mb-2">
+        {results.word}
 
-      <Phonetics phonetics={results.phonetics} />
+        <Phonetics phonetics={results.phonetics} />
+      </h2>
 
       {results.meanings.map(function (meaning, index) {
         return <Meaning meaning={meaning} key={index} />;
