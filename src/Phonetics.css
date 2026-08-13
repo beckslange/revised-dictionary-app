@@ -1,22 +1,30 @@
 .Phonetics {
-  position: relative;
+  margin-bottom: 30px;
   text-align: center;
 }
 
-.Phonetics .audio-button {
-  position: absolute;
-  right: 0;
-  top: -55px;
+.Phonetics .word-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 
+.Phonetics h2 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.Phonetics .audio-button {
   background: none;
   border: none;
-  font-size: 28px;
+  font-size: 27px;
   cursor: pointer;
   padding: 0;
 }
 
 .Phonetics .phonetic-text {
-  margin-top: 8px;
+  margin-top: 5px;
   font-size: 18px;
   color: #6c757d;
 }

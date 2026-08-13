@@ -1,16 +1,12 @@
 import React from "react";
 import "./Phonetics.css";
 
-export default function Phonetics({ phonetics }) {
-  if (!phonetics) {
-    return null;
-  }
-
-  const phoneticWithAudio = phonetics.find(
+export default function Phonetics({ word, phonetics }) {
+  const phoneticWithAudio = phonetics?.find(
     (phonetic) => phonetic.audio && phonetic.audio.trim() !== ""
   );
 
-  const phoneticText = phonetics.find((phonetic) => phonetic.text);
+  const phoneticWithText = phonetics?.find((phonetic) => phonetic.text);
 
   function playAudio() {
     if (phoneticWithAudio) {
@@ -21,18 +17,23 @@ export default function Phonetics({ phonetics }) {
 
   return (
     <div className="Phonetics">
-      {phoneticWithAudio && (
-        <button
-          className="audio-button"
-          onClick={playAudio}
-          type="button"
-          aria-label="Play pronunciation"
-        >
-          🔊
-        </button>
-      )}
+      <div className="word-header">
+        <h2>{word}</h2>
+        {phoneticWithAudio && (
+          <button
+            className="audio-button"
+            onClick={playAudio}
+            type="button"
+            aria-label="Play pronunciation"
+          >
+            🔊
+          </button>
+        )}
+      </div>
 
-      {phoneticText && <div className="phonetic-text">{phoneticText.text}</div>}
+      {phoneticWithText && (
+        <div className="phonetic-text">{phoneticWithText.text}</div>
+      )}
     </div>
   );
 }
