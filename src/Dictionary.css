@@ -1,7 +1,18 @@
 .Dictionary {
-  text-align: center;
+  margin-top: 60px;
 }
 
-.search-functions {
-  margin: 40px auto;
+.Dictionary form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.Dictionary input {
+  font-size: 18px;
+  padding: 12px;
+}
+
+.Dictionary button {
+  font-size: 18px;
+  padding: 12px 24px;
 }

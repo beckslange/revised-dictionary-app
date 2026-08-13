@@ -9,7 +9,7 @@ export default function Results({ results }) {
 
   return (
     <div className="Results">
-      <h2>{results.word}</h2>
+      <h2 className="word-header">{results.word}</h2>
 
       <Phonetics phonetics={results.phonetics} />
 
