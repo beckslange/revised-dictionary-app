@@ -1,0 +1,22 @@
+.Phonetics {
+  position: relative;
+  text-align: center;
+}
+
+.Phonetics .audio-button {
+  position: absolute;
+  right: 0;
+  top: -55px;
+
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.Phonetics .phonetic-text {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #6c757d;
+}

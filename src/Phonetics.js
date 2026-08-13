@@ -1,24 +1,38 @@
 import React from "react";
+import "./Phonetics.css";
 
 export default function Phonetics({ phonetics }) {
-  if (!phonetics || phonetics.length === 0) {
+  if (!phonetics) {
     return null;
+  }
+
+  const phoneticWithAudio = phonetics.find(
+    (phonetic) => phonetic.audio && phonetic.audio.trim() !== ""
+  );
+
+  const phoneticText = phonetics.find((phonetic) => phonetic.text);
+
+  function playAudio() {
+    if (phoneticWithAudio) {
+      const audio = new Audio(phoneticWithAudio.audio);
+      audio.play();
+    }
   }
 
   return (
     <div className="Phonetics">
-      {phonetics.map(function (phonetic, index) {
-        return (
-          <div key={index}>
-            {phonetic.text && <span>{phonetic.text}</span>}
-            {phonetic.audio && (
-              <audio controls>
-                <source src={phonetic.audio} type="audio/mpeg" />
-              </audio>
-            )}
-          </div>
-        );
-      })}
+      {phoneticWithAudio && (
+        <button
+          className="audio-button"
+          onClick={playAudio}
+          type="button"
+          aria-label="Play pronunciation"
+        >
+          🔊
+        </button>
+      )}
+
+      {phoneticText && <div className="phonetic-text">{phoneticText.text}</div>}
     </div>
   );
 }
