@@ -2,16 +2,26 @@ import React from "react";
 import "./Phonetics.css";
 
 export default function Phonetics({ word, phonetics }) {
+  console.log("All phonetics:", phonetics);
+
   const phoneticWithAudio = phonetics?.find(
-    (phonetic) => phonetic.audio && phonetic.audio.trim() !== ""
+    (phonetic) =>
+      phonetic.audio &&
+      phonetic.audio.trim() !== "" &&
+      phonetic.audio.startsWith("https://")
   );
 
   const phoneticWithText = phonetics?.find((phonetic) => phonetic.text);
 
   function playAudio() {
-    if (phoneticWithAudio) {
+    console.log("Trying to play:", phoneticWithAudio?.audio);
+
+    if (phoneticWithAudio?.audio) {
       const audio = new Audio(phoneticWithAudio.audio);
-      audio.play();
+
+      audio.play().catch((error) => {
+        console.log("Audio error:", error);
+      });
     }
   }
 
