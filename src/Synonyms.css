@@ -1,0 +1,14 @@
+.Synonyms {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.Synonyms h5 {
+  font-weight: 600;
+}
+
+.Synonyms p {
+  margin-top: 5 px;
+  font-size: 17px;
+  color: #4e5356;
+}

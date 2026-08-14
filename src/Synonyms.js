@@ -1,4 +1,5 @@
 import React from "react";
+import "./Synonyms.css";
 
 export default function Synonyms({ synonyms }) {
   if (!synonyms || synonyms.length === 0) {
@@ -7,13 +8,8 @@ export default function Synonyms({ synonyms }) {
 
   return (
     <div className="Synonyms">
-      <h4>Synonyms</h4>
-
-      <ul>
-        {synonyms.map(function (synonym) {
-          return <li key={synonym}>{synonym}</li>;
-        })}
-      </ul>
+      <h5>Synonyms</h5>
+      <p>{synonyms.join(" | ")}</p>
     </div>
   );
 }
