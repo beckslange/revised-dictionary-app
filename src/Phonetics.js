@@ -35,7 +35,7 @@ export default function Phonetics({ word, phonetics }) {
   return (
     <div className="Phonetics">
       <div className="word-header">
-        <h1>{word}</h1>
+        <h2>{word}</h2>
 
         {phoneticWithAudio && (
           <button
