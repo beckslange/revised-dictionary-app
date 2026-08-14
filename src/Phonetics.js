@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Phonetics.css";
 
 export default function Phonetics({ word, phonetics }) {
-  console.log("All phonetics:", phonetics);
+  const [audioError, setAudioError] = useState(false);
+
+  useEffect(() => {
+    setAudioError(false);
+  }, [word]);
 
   const phoneticWithAudio = phonetics?.find(
     (phonetic) =>
@@ -14,26 +18,30 @@ export default function Phonetics({ word, phonetics }) {
   const phoneticWithText = phonetics?.find((phonetic) => phonetic.text);
 
   function playAudio() {
-    console.log("Trying to play:", phoneticWithAudio?.audio);
-
-    if (phoneticWithAudio?.audio) {
-      const audio = new Audio(phoneticWithAudio.audio);
-
-      audio.play().catch((error) => {
-        console.log("Audio error:", error);
-      });
+    if (!phoneticWithAudio) {
+      return;
     }
+
+    setAudioError(false);
+
+    const audio = new Audio(phoneticWithAudio.audio);
+
+    audio.play().catch((error) => {
+      console.log("Pronunciation audio is unavailable:", error);
+      setAudioError(true);
+    });
   }
 
   return (
     <div className="Phonetics">
       <div className="word-header">
-        <h2>{word}</h2>
+        <h1>{word}</h1>
+
         {phoneticWithAudio && (
           <button
+            type="button"
             className="audio-button"
             onClick={playAudio}
-            type="button"
             aria-label="Play pronunciation"
           >
             🔊
@@ -43,6 +51,10 @@ export default function Phonetics({ word, phonetics }) {
 
       {phoneticWithText && (
         <div className="phonetic-text">{phoneticWithText.text}</div>
+      )}
+
+      {audioError && (
+        <div className="audio-error">Pronunciation audio unavailable</div>
       )}
     </div>
   );

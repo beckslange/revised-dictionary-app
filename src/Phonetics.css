@@ -23,6 +23,13 @@
   padding: 0;
 }
 
+.Phonetics .audio-error {
+  margin-top: 4px;
+  font-size: 13px;
+  font-style: italic;
+  color: #6c757d;
+}
+
 .Phonetics .phonetic-text {
   margin-top: 5px;
   font-size: 18px;
