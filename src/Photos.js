@@ -10,6 +10,7 @@ export default function Photos({ keyword }) {
     }
 
     const apiKey = process.env.REACT_APP_PEXELS_API_KEY;
+    console.log("Pexels key exists:", Boolean(apiKey));
 
     const apiURL = `https://api.pexels.com/v1/search?query=${encodeURIComponent(
       keyword
