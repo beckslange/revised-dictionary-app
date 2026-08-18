@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Photos.css";
 
 export default function Photos({ keyword }) {
   const [photos, setPhotos] = useState([]);
@@ -31,9 +32,21 @@ export default function Photos({ keyword }) {
 
   return (
     <div className="Photos">
-      {photos.map(function (photo) {
-        return <img src={photo.src.medium} alt={photo.alt} key={photo.id} />;
-      })}
+      <h4 className="photo-title">Photos</h4>
+
+      <div className="photo-gallery">
+        {photos.map(function (photo) {
+          return (
+            <div className="photo-card" key={photo.id}>
+              <img
+                src={photo.src.medium}
+                alt={photo.alt}
+                className="gallery-image"
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
