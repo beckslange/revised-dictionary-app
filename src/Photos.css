@@ -10,19 +10,26 @@
 
 .photo-gallery {
   display: flex;
-  gap: 15px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+
+  max-width: 600px;
+  margin: 0 auto;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .photo-card {
-  flex: 0 0 250px;
+  flex: 0 0 100%;
   scroll-snap-align: start;
+  box-sizing: border-box;
+  padding: 15px;
 }
 
 .gallery-image {
   width: 100%;
-  height: 180px;
+  height: 250px;
   object-fit: cover;
   border-radius: 8px;
 }
