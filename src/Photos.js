@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./Photos.css";
 
 export default function Photos({ keyword }) {
   const [photos, setPhotos] = useState([]);
   const [currentPhoto, setCurrentPhoto] = useState(0);
+  const galleryRef = useRef(null);
 
   useEffect(() => {
     if (!keyword) {
@@ -25,17 +26,35 @@ export default function Photos({ keyword }) {
       })
       .then(function (response) {
         setPhotos(response.data.photos);
+        setCurrentPhoto(0);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, [keyword]);
 
+  useEffect(() => {
+    if (!galleryRef.current) {
+      return;
+    }
+
+    const galleryWidth = galleryRef.current.clientWidth;
+
+    galleryRef.current.scrollTo({
+      left: currentPhoto * galleryWidth,
+      behavior: "smooth",
+    });
+  }, [currentPhoto]);
+
   function showNextPhoto() {
-    setCurrentPhoto(currentPhoto + 1);
+    setCurrentPhoto(function (current) {
+      return current === photos.length - 1 ? 0 : current + 1;
+    });
   }
   function showPreviousPhoto() {
-    setCurrentPhoto(currentPhoto - 1);
+    setCurrentPhoto(function (current) {
+      return current === 0 ? photos.length - 1 : current - 1;
+    });
   }
 
   return (
@@ -51,7 +70,7 @@ export default function Photos({ keyword }) {
           ‹
         </button>
 
-        <div className="photo-gallery">
+        <div className="photo-gallery" ref={galleryRef}>
           {photos.map(function (photo) {
             return (
               <div className="photo-card" key={photo.id}>
