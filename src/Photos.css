@@ -20,12 +20,31 @@
   border-radius: 4px;
 
   flex: 1;
+
+  scrollbar-width: none;
+}
+
+.photo-gallery::-webkit-scrollbar {
+  display: none;
 }
 
 .photo-carousel {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.photo-arrow {
+  border: none;
+  background: transparent;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 10px;
+  color: #4e5356;
+}
+
+.photo-arrow:hover {
+  color: #000;
 }
 
 .photo-card {
@@ -40,4 +59,11 @@
   height: 250px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.photo-counter {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #6c757d;
 }

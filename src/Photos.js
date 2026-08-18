@@ -33,28 +33,48 @@ export default function Photos({ keyword }) {
       });
   }, [keyword]);
 
-  useEffect(() => {
-    if (!galleryRef.current) {
+  function showNextPhoto() {
+    if (!galleryRef.current || photos.length === 0) {
       return;
     }
 
     const galleryWidth = galleryRef.current.clientWidth;
 
+    const nextPhoto = currentPhoto === photos.length - 1 ? 0 : currentPhoto + 1;
+
     galleryRef.current.scrollTo({
-      left: currentPhoto * galleryWidth,
+      left: nextPhoto * galleryWidth,
       behavior: "smooth",
     });
-  }, [currentPhoto]);
+  }
 
-  function showNextPhoto() {
-    setCurrentPhoto(function (current) {
-      return current === photos.length - 1 ? 0 : current + 1;
+  function showPreviousPhoto() {
+    if (!galleryRef.current || photos.length === 0) {
+      return;
+    }
+
+    const galleryWidth = galleryRef.current.clientWidth;
+
+    const previousPhoto =
+      currentPhoto === 0 ? photos.length - 1 : currentPhoto - 1;
+
+    galleryRef.current.scrollTo({
+      left: previousPhoto * galleryWidth,
+      behavior: "smooth",
     });
   }
-  function showPreviousPhoto() {
-    setCurrentPhoto(function (current) {
-      return current === 0 ? photos.length - 1 : current - 1;
-    });
+
+  function handleScroll() {
+    if (!galleryRef.current) {
+      return;
+    }
+
+    const galleryWidth = galleryRef.current.clientWidth;
+    const scrollPosition = galleryRef.current.scrollLeft;
+
+    const photoIndex = Math.round(scrollPosition / galleryWidth);
+
+    setCurrentPhoto(photoIndex);
   }
 
   return (
@@ -70,7 +90,7 @@ export default function Photos({ keyword }) {
           ‹
         </button>
 
-        <div className="photo-gallery" ref={galleryRef}>
+        <div className="photo-gallery" ref={galleryRef} onScroll={handleScroll}>
           {photos.map(function (photo) {
             return (
               <div className="photo-card" key={photo.id}>
@@ -88,6 +108,12 @@ export default function Photos({ keyword }) {
           ›
         </button>
       </div>
+
+      {photos.length > 0 && (
+        <p className="photo-counter">
+          {currentPhoto + 1} of {photos.length}
+        </p>
+      )}
     </div>
   );
 }
