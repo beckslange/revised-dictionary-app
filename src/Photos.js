@@ -4,6 +4,7 @@ import "./Photos.css";
 
 export default function Photos({ keyword }) {
   const [photos, setPhotos] = useState([]);
+  const [currentPhoto, setCurrentPhoto] = useState(0);
 
   useEffect(() => {
     if (!keyword) {
@@ -30,22 +31,43 @@ export default function Photos({ keyword }) {
       });
   }, [keyword]);
 
+  function showNextPhoto() {
+    setCurrentPhoto(currentPhoto + 1);
+  }
+  function showPreviousPhoto() {
+    setCurrentPhoto(currentPhoto - 1);
+  }
+
   return (
     <div className="Photos">
       <h4 className="photo-title">Photos</h4>
 
-      <div className="photo-gallery">
-        {photos.map(function (photo) {
-          return (
-            <div className="photo-card" key={photo.id}>
-              <img
-                src={photo.src.medium}
-                alt={photo.alt}
-                className="gallery-image"
-              />
-            </div>
-          );
-        })}
+      <div className="photo-carousel">
+        <button
+          className="photo-arrow"
+          onClick={showPreviousPhoto}
+          type="button"
+        >
+          ‹
+        </button>
+
+        <div className="photo-gallery">
+          {photos.map(function (photo) {
+            return (
+              <div className="photo-card" key={photo.id}>
+                <img
+                  src={photo.src.medium}
+                  alt={photo.alt}
+                  className="gallery-image"
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        <button className="photo-arrow" onClick={showNextPhoto} type="button">
+          ›
+        </button>
       </div>
     </div>
   );

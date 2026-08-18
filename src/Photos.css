@@ -18,6 +18,14 @@
 
   border: 1px solid #ddd;
   border-radius: 4px;
+
+  flex: 1;
+}
+
+.photo-carousel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .photo-card {
