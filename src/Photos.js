@@ -22,7 +22,6 @@ export default function Photos({ keyword }) {
         },
       })
       .then(function (response) {
-        console.log(response.data);
         setPhotos(response.data.photos);
       })
       .catch(function (error) {
