@@ -1,0 +1,28 @@
+.Photos {
+  margin-top: 30px;
+}
+
+.photo-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.photo-gallery {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.photo-card {
+  flex: 0 0 250px;
+  scroll-snap-align: start;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
