@@ -1,3 +1,14 @@
 .Results {
   text-align: left;
 }
+
+@media (max-width: 576px) {
+  .Results {
+    padding: 0 10px;
+  }
+
+  .Results h2 {
+    font-size: 32px;
+    overflow-wrap: anywhere;
+  }
+}

@@ -32,9 +32,29 @@
   margin-top: 0;
 }
 
+@media (max-width: 768px) {
+  .Meaning {
+    grid-template-columns: 1fr;
+  }
+
+  .meaning-left,
+  .meaning-right {
+    width: 100%;
+  }
+}
+
 @media (max-width: 576px) {
   .Meaning {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .definitions,
+  .examples {
+    font-size: 12px;
+  }
+
+  .part-of-speech {
+    font-size: 17px;
   }
 }

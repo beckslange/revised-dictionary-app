@@ -11,4 +11,16 @@
   margin-top: 1px;
   font-size: 17px;
   color: #4e5356;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+
+@media (max-width: 576px) {
+  .Synonyms {
+    padding: 0 10px;
+  }
+
+  .Synonyms p {
+    font-size: 15px;
+  }
 }

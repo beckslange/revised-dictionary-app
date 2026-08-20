@@ -14,6 +14,7 @@
   scroll-snap-type: x mandatory;
 
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
 
   border: 1px solid #ddd;
@@ -22,6 +23,7 @@
   flex: 1;
 
   scrollbar-width: none;
+  box-sizing: border-box;
 }
 
 .photo-gallery::-webkit-scrollbar {
@@ -66,4 +68,18 @@
   margin-top: 8px;
   font-size: 11px;
   color: #6c757d;
+}
+
+.media (max-width: 576px) {
+  .Photos {
+    margin-top: 20px;
+  }
+
+  .photo-gallery {
+    padding: 10px;
+  }
+
+  .gallery-image {
+    height: 220px;
+  }
 }

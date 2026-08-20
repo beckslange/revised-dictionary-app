@@ -16,3 +16,17 @@
   font-size: 18px;
   padding: 12px 24px;
 }
+
+@media (max-width: 576px) {
+  .Dictionary {
+    padding: 0 15px;
+  }
+
+  .Dictionary input {
+    font-size: 16px;
+  }
+
+  .Dictionary button {
+    font-size: 16px;
+  }
+}
